@@ -1,0 +1,77 @@
+body {
+  background: url('../images/background.jpeg');
+}
+div {
+  width:90%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+h1,h2 {
+  color: white;
+  text-align: center;
+}
+
+img {
+  width : 200px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+.inputPlayer input {
+  display:block;
+  margin: 0 auto;
+}
+
+.row {
+  border-bottom: 5px solid white;
+}
+
+.square {
+  display:inline-block;
+  width: 32%;
+  max-height: 30%;
+  border: 1px solid black;
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+.lightboxContent {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.winner {
+  background-color: black;
+}
