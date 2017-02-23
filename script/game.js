@@ -105,6 +105,7 @@ var openLightbox = function() {
 
 var closeLightbox = function() {
   $('.lightbox').css('display', 'none');
+  $('h2').removeClass();
   $('div.square img').attr('src', ' ');
   $('div.square img').on('click',startGame());
 }
