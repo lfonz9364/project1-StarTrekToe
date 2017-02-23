@@ -1,9 +1,12 @@
 console.log('game');
 
 
-
+var playerOneWinCounter;
+var playerTwoWinCounter;
 var playerOneScore = [];
 var playerTwoScore = [];
+
+
 
   var clearNames = function() {
     $('input.playerOne').val('');
@@ -46,9 +49,11 @@ var playerTwoScore = [];
   var winOrLose = function(score1,score2,player1,player2) {
     if (playerWhoWin(score1) === true) {
       $('.winner').text(player1 + " is the winner");
+      playerOneWinCounter += 1;
       return true;
     } else if(playerWhoWin(score2) === true) {
       $('.winner').text(player2 + " is the winner");
+      playerTwoWinCounter += 1;
       return true;
     } else {
       if(score1.length > 2){
@@ -74,7 +79,7 @@ var playerTwoScore = [];
       var divIndex = String(targetParent.index());
       var divParentIndex = String(targetPop.index());
       var combIndex = divParentIndex + divIndex;
-
+        debugger;
       if ($('h2').attr('class') == 'playerOne') {
         playerOneScore.push(combIndex);
         $target.attr('src', 'images/klingon_cruiser.jpg');
@@ -100,7 +105,8 @@ var openLightbox = function() {
 
 var closeLightbox = function() {
   $('.lightbox').css('display', 'none');
-  location.reload();
+  $('div.square img').attr('src', ' ');
+  $('div.square img').on('click',startGame());
 }
 
 var openStartPage = function() {
@@ -111,4 +117,4 @@ var closeStartPage = function() {
   $('.startPage').css('display', 'none');
 }
 
-$(document).ready(openStartPage());
+$(document).one('ready',openStartPage());
