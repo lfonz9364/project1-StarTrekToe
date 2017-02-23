@@ -7,31 +7,54 @@ div {
   margin: 0 auto;
 }
 
-h1,h2 {
+h1,h2,h3 {
   color: white;
   text-align: center;
+  text-shadow: 5px 5px #000000,
+               5px 5px #000000;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 30px;
 }
 
 img {
   width : 200px;
   height: 200px;
-  border: 1px solid black;
+  border: none;
+}
+
+button {
+  margin: 10px;
 }
 
 .inputPlayer input {
   display:block;
   margin: 0 auto;
+  border-radius: 1em;
+  font-size: 1.5em;
+  box-shadow: 5px 5px #000000,
+               5px 5px #000000;
+  max-width: 100%;
+  text-align: center;
 }
 
 .row {
   border-bottom: 5px solid white;
 }
 
+.third {
+  border-bottom: none;
+}
+
 .square {
   display:inline-block;
   width: 32%;
   max-height: 30%;
-  border: 1px solid black;
 }
 
 .lightbox {
@@ -49,7 +72,7 @@ img {
 
 .lightboxContent {
   position: relative;
-  background-color: #fefefe;
+  background-color: #000000;
   margin: auto;
   padding: 0;
   width: 90%;
@@ -72,6 +95,29 @@ img {
   cursor: pointer;
 }
 
-.winner {
-  background-color: black;
+.startPage {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-image: url('../images/startBackground.jpg');
+  background-size: cover
+}
+
+.startPageContent {
+  position: relative;
+  bottom: 15%;
+  background-color: rgba(0,0,0,0.2);
+  margin: auto;
+  padding: 0;
+  width: 20%;
+}
+
+.gameBoard {
+  margin: 60px auto;
 }

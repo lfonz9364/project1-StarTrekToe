@@ -8,18 +8,28 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Star Trek Toe</h1>
-  <div class="inputPlayer">
-    <input class="playerOne" type="text">
-    <input class="playerTwo" type="text">
-    <button class="startGame" onclick="startGame()">Start</button>
-    <button class="clearNames" onclick="clearNames()">Clear Names</button>
+  <div class="startPage">
+    <div class="startPageContent">
+      <h1>Star Trek Toe</h1>
+      <div class="inputPlayer">
+          <h3>Player One Name</h3>
+          <input class="playerOne" type="text">
+          <h3>Choose your side</h3>
+          <input class="playerOneSide" type="text">
+          <h3>Player Two Name</h3>
+          <input class="playerTwo" type="text">
+          <h3>Choose your side</h3>
+          <input class="playerTwoSide" type="text">
+        <button class="startGame" onclick="closeStartPage();startGame();">Start</button>
+        <button class="clearNames" onclick="clearNames()">Clear Names</button>
+      </div>
+    </div>
   </div>
-  <h2 class="playerOne"></h2>
+  <h2></h2>
   <div class="gameBoard">
     <div class="first row">
       <div class="square">
-        <img src="#" alt="">
+        <img src="" alt="">
       </div>
       <div class="square">
         <img src="" alt="">
@@ -54,7 +64,7 @@
   <div class="lightbox">
     <span class="close cursor" onclick="closeLightbox()">&times;</span>
     <div class="lightboxContent">
-      <h2 class="playerOne"></h2>
+      <h1 class='winner'></h1>
     </div>
   </div>
   <script

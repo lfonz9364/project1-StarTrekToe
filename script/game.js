@@ -1,5 +1,7 @@
 console.log('game');
 
+
+
 var playerOneScore = [];
 var playerTwoScore = [];
 
@@ -22,6 +24,9 @@ var playerTwoScore = [];
       $('h2').removeClass();
       $('h2').addClass('playerOne');
       $('h2').text(name1 + ' turn');
+    } else {
+      $('h2').addClass('playerOne');
+      $('h2').text(name1 + ' turn');
     }
   }
 
@@ -39,12 +44,11 @@ var playerTwoScore = [];
   }
 
   var winOrLose = function(score1,score2,player1,player2) {
-    debugger;
     if (playerWhoWin(score1) === true) {
-      $('h2').text(player1 + " is the winner");
+      $('.winner').text(player1 + " is the winner");
       return true;
     } else if(playerWhoWin(score2) === true) {
-      $('h2').text(player2 + " is the winner");
+      $('.winner').text(player2 + " is the winner");
       return true;
     } else {
       if(score1.length > 2){
@@ -59,7 +63,9 @@ var playerTwoScore = [];
   var startGame = function() {
     var playerOneName = $('input.playerOne').val();
     var playerTwoName = $('input.playerTwo').val();
-    $('h2').text(playerOneName + ' turn');
+    var playerOneSide = $('input.playerTwo').val();
+    var playerTwoSide = $('input.playerTwo').val();
+    playerSelection(playerOneName,playerTwoName);
 
     $('div.square img').click(function(event) {
       var $target = $(event.target);
@@ -81,20 +87,28 @@ var playerTwoScore = [];
       playerSelection(playerOneName,playerTwoName);
       if (playerOneScore.length > 2 || playerTwoScore.length > 2){
         if(winOrLose(playerOneScore,playerTwoScore,playerOneName,playerTwoName)) {
-          openLightbox();
+          return openLightbox();
         }
       }
-      $target.unbind('click').attr('disabled','disabled');
+      $target.off('click');
     });
   }
 
 var openLightbox = function() {
   $('.lightbox').css('display', 'block');
-  $('lightbox h2').removeClass();
-  $('lightbox h2').addClass('winner');
 }
 
 var closeLightbox = function() {
   $('.lightbox').css('display', 'none');
-  $('lightbox h2').removeClass();
+  location.reload();
 }
+
+var openStartPage = function() {
+  $('.startPage').css('display', 'block');
+}
+
+var closeStartPage = function() {
+  $('.startPage').css('display', 'none');
+}
+
+$(document).ready(openStartPage());
