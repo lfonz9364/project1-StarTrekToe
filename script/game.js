@@ -1,8 +1,9 @@
 console.log('game');
 
 
-var playerOneWinCounter;
-var playerTwoWinCounter;
+var playerOneWinCounter = 0;
+var playerTwoWinCounter = 0;
+var roundNumber = 0;
 var playerOneScore = [];
 var playerTwoScore = [];
 
@@ -17,6 +18,7 @@ var playerTwoScore = [];
     playerOneScore = [];
     playerTwoScore = [];
   }
+
 
   var playerSelection = function(name1,name2){
     if ($('h2').attr('class') === 'playerOne') {
@@ -40,18 +42,19 @@ var playerTwoScore = [];
     var x = false;
     for (var i = 0; i < winCondition.length; i++){
       if (score.join('') === winCondition[i].join('')) {
-        return x=true;
+        return x = true;
       }
     }
     return x;
   }
 
   var winOrLose = function(score1,score2,player1,player2) {
-    if (playerWhoWin(score1) === true) {
+    debugger;
+    if (playerWhoWin(score1)) {
       $('.winner').text(player1 + " is the winner");
       playerOneWinCounter += 1;
       return true;
-    } else if(playerWhoWin(score2) === true) {
+    } else if (playerWhoWin(score2)) {
       $('.winner').text(player2 + " is the winner");
       playerTwoWinCounter += 1;
       return true;
@@ -70,6 +73,8 @@ var playerTwoScore = [];
     var playerTwoName = $('input.playerTwo').val();
     var playerOneSide = $('input.playerTwo').val();
     var playerTwoSide = $('input.playerTwo').val();
+    $('.playerOneName').text(playerOneName);
+    $('.playerTwoName').text(playerTwoName);
     playerSelection(playerOneName,playerTwoName);
 
     $('div.square img').click(function(event) {
@@ -79,7 +84,7 @@ var playerTwoScore = [];
       var divIndex = String(targetParent.index());
       var divParentIndex = String(targetPop.index());
       var combIndex = divParentIndex + divIndex;
-        debugger;
+      
       if ($('h2').attr('class') == 'playerOne') {
         playerOneScore.push(combIndex);
         $target.attr('src', 'images/klingon_cruiser.jpg');
@@ -92,7 +97,8 @@ var playerTwoScore = [];
       playerSelection(playerOneName,playerTwoName);
       if (playerOneScore.length > 2 || playerTwoScore.length > 2){
         if(winOrLose(playerOneScore,playerTwoScore,playerOneName,playerTwoName)) {
-          return openLightbox();
+          resetScore();
+          openLightbox();
         }
       }
       $target.off('click');
@@ -101,13 +107,13 @@ var playerTwoScore = [];
 
 var openLightbox = function() {
   $('.lightbox').css('display', 'block');
+  $('.winCountOne').text(playerOneWinCounter);
+  $('.winCountTwo').text(playerTwoWinCounter);
 }
 
 var closeLightbox = function() {
   $('.lightbox').css('display', 'none');
-  $('h2').removeClass();
-  $('div.square img').attr('src', ' ');
-  $('div.square img').on('click',startGame());
+  resetGame();
 }
 
 var openStartPage = function() {
@@ -116,6 +122,13 @@ var openStartPage = function() {
 
 var closeStartPage = function() {
   $('.startPage').css('display', 'none');
+}
+
+var resetGame = function() {
+  roundNumber += 1;
+  $('h2').removeClass();
+  $('div.square img').attr('src', ' ');
+  $('div.square img').on('click',startGame());
 }
 
 $(document).one('ready',openStartPage());
