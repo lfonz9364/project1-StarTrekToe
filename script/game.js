@@ -7,8 +7,10 @@ var playerTwoWinCounter = 0;
 var roundNumber = 0;
 
   var clearNames = function() {
-    $('input.playerOne').val('');
-    $('input.playerTwo').val('');
+    $('.playerOne').val('');
+    $('.playerTwo').val('');
+    $('.categoryOne').val('');
+    $('.categoryTwo').val('');
   };
 
   var resetScore = function() {
@@ -82,7 +84,6 @@ var selectCharacter = function(value) {
       var divIndex = $target.index();
       var divParentIndex = targetParent.index();
       var combIndex = String(divParentIndex) + String(divIndex);
-      debugger;
       if ($('h2').attr('class') == 'playerOne') {
         playerOneScore.push(combIndex);
         $target.css({backgroundImage: playerOneAvatar});
@@ -93,12 +94,12 @@ var selectCharacter = function(value) {
       playerSelection(playerOneName,playerTwoName);
       if (playerOneScore.length > 2 || playerTwoScore.length > 2){
         if (playerWhoWin(playerOneScore) == 1 ) {
-          $('.winner').text(playerOneName + " is the winner");
+          $('.winner').text(playerOneName + " is The Winner");
           playerOneWinCounter += 1;
           resetScore();
           return openLightbox();
         } else if (playerWhoWin(playerTwoScore) == 1) {
-          $('.winner').text(playerTwoName + " is the winner");
+          $('.winner').text(playerTwoName + " is The Winner");
           playerTwoWinCounter += 1;
           resetScore();
           return openLightbox();
