@@ -163,3 +163,9 @@ select {
 .winner {
   margin: 12% auto;
 }
+
+footer {
+  text-align: center;
+  color: #ffffff;
+  font-size: 1.5em;
+}

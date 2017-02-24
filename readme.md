@@ -11,20 +11,25 @@ I choose to breakdown the projects into small problems and try to solve the smal
 
 ### What I Learned
 
-Jquery is really helpful in optimizing code lines. There are features of Jquery that only required several words that could cover lines of Javascript functions. However, it is still require the programmer's creativity in using each one of the code to replace Javascript codes properly.
+Jquery is really helpful in optimising code lines. There are features of Jquery that only required several words that could cover lines of Javascript functions. However, it is still require the programmer's creativity in using each one of the code to replace Javascript codes properly.
 
 ### Unsolved Problems
 
-The current version have one not yet solved problem which is the way to check winning condition when the size of the board changes.
+The current version have several not yet solved problem which are:
+* The way to check winning condition when the size of the board changes
+* The tie condition
 
 ### To-Do-List
 
 * Add Timer
 * Custom board sizing
+* Tie condition
 
 ### Future Features
 
 * Timer for every round
 * Capability to customise box size
+* Tie condition
+* Animation
 
 [Play Game](https://lfonz9364.github.io/projects/)
