@@ -15,11 +15,23 @@
           <h3>Player One Name</h3>
           <input class="playerOne" type="text">
           <h3>Choose your side</h3>
-          <input class="playerOneSide" type="text">
+          <select class="categoryOne">
+            <option value="">Race</option>
+            <option value="1">Klingon</option>
+            <option value="2">Borg</option>
+            <option value="3">Romulan</option>
+            <option value="4">Vulcan</option>
+          </select>
           <h3>Player Two Name</h3>
           <input class="playerTwo" type="text">
           <h3>Choose your side</h3>
-          <input class="playerTwoSide" type="text">
+          <select class="categoryTwo">
+            <option value="">Race</option>
+            <option value="1">Klingon</option>
+            <option value="2">Borg</option>
+            <option value="3">Romulan</option>
+            <option value="4">Vulcan</option>
+          </select>
         <button class="startGame" onclick="closeStartPage();startGame();">Start</button>
         <button class="clearNames" onclick="clearNames()">Clear Names</button>
       </div>
@@ -28,14 +40,12 @@
   <div>
     <p>
       <p class="playerOneName"></p>
-      :
       <p class="winCountOne"></p>
     </p>
   </div>
   <div>
     <p>
       <p class="playerTwoName"></p>
-      :
       <p class="winCountTwo"></p>
     </p>
   </div>
@@ -43,35 +53,26 @@
   <div class="gameBoard">
     <div class="first row">
       <div class="square">
-        <img src="" alt="">
       </div>
       <div class="square">
-        <img src="" alt="">
       </div>
       <div class="square">
-        <img src="" alt="">
       </div>
     </div>
     <div class="second row">
       <div class="square">
-        <img src="" alt="">
       </div>
       <div class="square">
-        <img src="" alt="">
       </div>
       <div class="square">
-        <img src="" alt="">
       </div>
     </div>
     <div class="third row">
       <div class="square">
-        <img src="" alt="">
       </div>
       <div class="square">
-        <img src="" alt="">
       </div>
       <div class="square">
-        <img src="" alt="">
       </div>
     </div>
   </div>
