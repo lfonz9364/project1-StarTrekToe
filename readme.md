@@ -32,4 +32,4 @@ The current version have several not yet solved problem which are:
 * Tie condition
 * Animation
 
-[Play Game](https://lfonz9364.github.io/projects/)
+[Play Game](https://lfonz9364.github.io/project1-StarTrekToe/)
