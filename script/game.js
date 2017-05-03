@@ -84,28 +84,36 @@ var selectCharacter = function(value) {
       var divIndex = $target.index();
       var divParentIndex = targetParent.index();
       var combIndex = String(divParentIndex) + String(divIndex);
-      if ($('h2').attr('class') == 'playerOne') {
-        playerOneScore.push(combIndex);
-        $target.css({backgroundImage: playerOneAvatar});
-      } else if ($('h2').attr('class') == 'playerTwo'){
-        playerTwoScore.push(combIndex);
-        $target.css({backgroundImage: playerTwoAvatar});
-      }
-      playerSelection(playerOneName,playerTwoName);
-      if (playerOneScore.length > 2 || playerTwoScore.length > 2){
-        if (playerWhoWin(playerOneScore) == 1 ) {
-          $('.winner').text(playerOneName + " is The Winner");
-          playerOneWinCounter += 1;
-          resetScore();
-          return openLightbox();
-        } else if (playerWhoWin(playerTwoScore) == 1) {
-          $('.winner').text(playerTwoName + " is The Winner");
-          playerTwoWinCounter += 1;
-          resetScore();
-          return openLightbox();
+
+      while ($target.css('backgroundImage') == 'none') {
+        if ($('h2').attr('class') == 'playerOne') {
+          playerOneScore.push(combIndex);
+          $target.css({backgroundImage: playerOneAvatar});
+        } else if ($('h2').attr('class') == 'playerTwo'){
+          playerTwoScore.push(combIndex);
+          $target.css({backgroundImage: playerTwoAvatar});
+        }
+        playerSelection(playerOneName,playerTwoName);
+        if (playerOneScore.length > 2 || playerTwoScore.length > 2){
+          if (playerWhoWin(playerOneScore) == 1 ) {
+            winnerName = $("<h1 class='winnerName'>");
+            winnerName.text(playerOneName);
+            $('.lightboxContent').append(winnerName);
+            playerOneWinCounter += 1;
+            resetScore();
+            return openLightbox();
+          } else if (playerWhoWin(playerTwoScore) == 1) {
+            winnerName = $("<h1 class='winnerName'>");
+            winnerName.text(playerTwoName);
+            $('.lightboxContent').append(winnerName);
+            playerTwoWinCounter += 1;
+            resetScore();
+            return openLightbox();
+          } else {
+            
+          }
         }
       }
-      return $target.attr('disabled','disabled')
   });
 }
 
@@ -117,6 +125,7 @@ var openLightbox = function() {
 
 var closeLightbox = function() {
   $('.lightbox').css('display', 'none');
+  $('.winnerName').remove();
   resetGame();
 };
 
@@ -130,8 +139,7 @@ var closeStartPage = function() {
 
 var resetGame = function() {
   roundNumber += 1;
-  $('.square').css({backgroundImage: ''});
-  $('.square').removeAttr('disabled');
+  $('.square').css({backgroundImage: 'none'});
 };
 
 $(document).one('ready',openStartPage());
