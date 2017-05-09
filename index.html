@@ -14,7 +14,7 @@
       <h1>STAR TREK TOE</h1>
       <div class="inputPlayer">
           <h3>Player One Name</h3>
-          <input class="playerOne" type="text">
+          <input class="playerOne" type="text" placeholder="Input player 1 name">
           <h3>Choose Your Side</h3>
           <select class="categoryOne">
             <option value="">Race</option>
@@ -24,7 +24,7 @@
             <option value="4">Vulcan</option>
           </select>
           <h3>Player Two Name</h3>
-          <input class="playerTwo" type="text">
+          <input class="playerTwo" type="text" placeholder="Input player 2 name">
           <h3>Choose Your Side</h3>
           <select class="categoryTwo">
             <option value="">Race</option>
@@ -33,26 +33,23 @@
             <option value="3">Romulan</option>
             <option value="4">Vulcan</option>
           </select>
-        <button class="startGame" onclick="closeStartPage();startGame();">Start</button>
+        <button class="startGame" onclick="inputValidation();">Start</button>
         <button class="clearNames" onclick="clearNames()">Clear</button>
       </div>
     </div>
   </div>
-  <div>
+  <div class="header">
     <p>
       <p class="playerOneName"></p>
-      <p>:</p>
       <p class="winCountOne"></p>
     </p>
   </div>
-  <div>
+  <div class="header">
     <p>
       <p class="playerTwoName"></p>
-      <p>:</p>
       <p class="winCountTwo"></p>
     </p>
   </div>
-  <button class='reset' onclick="resetGame();resetScore();">Reset Game</button>
   <h2></h2>
   <div class="gameBoard">
     <div class="first row">
@@ -83,7 +80,8 @@
   <div class="lightbox">
     <span class="close cursor" onclick="closeLightbox()">&times;</span>
     <div class="lightboxContent">
-      <h1 class='winner'>The Winner:</h1>
+      <h1>WINNER</h1>
+      <h1 class='winner'></h1>
     </div>
   </div>
   <footer>&#169;L-Fonz 2017</footer>
@@ -91,7 +89,6 @@
   src="https://code.jquery.com/jquery-3.1.1.js"
   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
   crossorigin="anonymous"></script>
-
   <script src="script/game.js"></script>
 </body>
 </html>

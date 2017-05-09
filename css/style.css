@@ -1,7 +1,11 @@
 body {
   background: url('../images/background.jpeg');
   margin: 30px auto;
+<<<<<<< HEAD
   max-height: 100vh;
+=======
+  zoom: 80%;
+>>>>>>> master
 }
 div {
   width:90%;
@@ -40,6 +44,7 @@ h3 {
 p {
   font-size: 2.5em;
   display: inline;
+  margin: 10px;
 }
 
 button {
@@ -153,6 +158,12 @@ select {
   width: 70%;
 }
 
+.header {
+  display: inline-block;
+  vertical-align: text-top;
+  width: 49%;
+}
+
 .inputPlayer {
   width: 40%;
 }
@@ -162,7 +173,11 @@ select {
 }
 
 .winner {
+<<<<<<< HEAD
   margin: 8% auto 0;
+=======
+  margin: 0 auto;
+>>>>>>> master
 }
 
 footer {

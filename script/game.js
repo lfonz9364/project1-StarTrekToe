@@ -64,6 +64,23 @@ var selectCharacter = function(value) {
     return 'url(images/romulan.jpg)';
   } else if (value === '4') {
     return 'url(images/vulcan.jpg)';
+  } else if (value === '5') {
+    return 'url(images/klingon_2.jpg)';
+  } else if (value === '6') {
+    return 'url(images/borg_sphere.png)';
+  } else if (value === '7') {
+    return 'url(images/romulan_2.jpg)';
+  } else {
+    return 'url(images/vulcan_2.jpg)';
+  }
+}
+
+var uniqueCharacter = function(playerOne, playerTwo){
+  if(playerOne === playerTwo) {
+    playerTwo = +playerTwo + 4;
+    return playerTwo.toString();
+  } else {
+    return playerTwo;
   }
 }
 
@@ -71,47 +88,40 @@ var selectCharacter = function(value) {
     var playerOneName = $('.playerOne').val();
     var playerTwoName = $('.playerTwo').val();
     var playerOneSide = $('.categoryOne').val();
-    var playerTwoSide = $('.categoryTwo').val();
+    var playerTwoSide = uniqueCharacter(playerOneSide, $('.categoryTwo').val());
     var playerOneAvatar = selectCharacter(playerOneSide);
     var playerTwoAvatar = selectCharacter(playerTwoSide);
     $('.playerOneName').text(playerOneName);
     $('.playerTwoName').text(playerTwoName);
     playerSelection(playerOneName,playerTwoName);
 
-    $('.square').click(function(event) {
+    $('.square').on('click',function(event) {
       var $target = $(event.target);
       var targetParent = $target.parent();
       var divIndex = $target.index();
       var divParentIndex = targetParent.index();
       var combIndex = String(divParentIndex) + String(divIndex);
 
-      while ($target.css('backgroundImage') == 'none') {
-        if ($('h2').attr('class') == 'playerOne') {
-          playerOneScore.push(combIndex);
-          $target.css({backgroundImage: playerOneAvatar});
-        } else if ($('h2').attr('class') == 'playerTwo'){
-          playerTwoScore.push(combIndex);
-          $target.css({backgroundImage: playerTwoAvatar});
-        }
-        playerSelection(playerOneName,playerTwoName);
-        if (playerOneScore.length > 2 || playerTwoScore.length > 2){
-          if (playerWhoWin(playerOneScore) == 1 ) {
-            winnerName = $("<h1 class='winnerName'>");
-            winnerName.text(playerOneName);
-            $('.lightboxContent').append(winnerName);
-            playerOneWinCounter += 1;
-            resetScore();
-            return openLightbox();
-          } else if (playerWhoWin(playerTwoScore) == 1) {
-            winnerName = $("<h1 class='winnerName'>");
-            winnerName.text(playerTwoName);
-            $('.lightboxContent').append(winnerName);
-            playerTwoWinCounter += 1;
-            resetScore();
-            return openLightbox();
-          } else {
-            
-          }
+      $target.off('click');
+      if ($('h2').attr('class') == 'playerOne') {
+        playerOneScore.push(combIndex);
+        $target.css({backgroundImage: playerOneAvatar});
+      } else if ($('h2').attr('class') == 'playerTwo'){
+        playerTwoScore.push(combIndex);
+        $target.css({backgroundImage: playerTwoAvatar});
+      }
+      playerSelection(playerOneName,playerTwoName);
+      if (playerOneScore.length > 2 || playerTwoScore.length > 2){
+        if (playerWhoWin(playerOneScore) == 1 ) {
+          $('.winner').text(playerOneName);
+          playerOneWinCounter += 1;
+          resetScore();
+          return openLightbox();
+        } else if (playerWhoWin(playerTwoScore) == 1) {
+          $('.winner').text(playerTwoName);
+          playerTwoWinCounter += 1;
+          resetScore();
+          return openLightbox();
         }
       }
   });
@@ -139,7 +149,17 @@ var closeStartPage = function() {
 
 var resetGame = function() {
   roundNumber += 1;
-  $('.square').css({backgroundImage: 'none'});
+  $('.square').css({backgroundImage: ''});
+  startGame();
 };
+
+var inputValidation = function() {
+  if(!$('.playerOne').val() || !$('.playerTwo').val() || !$('.categoryOne').val() || !$('.categoryTwo').val()){
+    alert('Please complete all information');
+  } else {
+    closeStartPage();
+    startGame();
+  }
+}
 
 $(document).one('ready',openStartPage());
