@@ -64,6 +64,23 @@ var selectCharacter = function(value) {
     return 'url(images/romulan.jpg)';
   } else if (value === '4') {
     return 'url(images/vulcan.jpg)';
+  } else if (value === '5') {
+    return 'url(images/klingon_2.jpg)';
+  } else if (value === '6') {
+    return 'url(images/borg_sphere.png)';
+  } else if (value === '7') {
+    return 'url(images/romulan_2.jpg)';
+  } else {
+    return 'url(images/vulcan_2.jpg)';
+  }
+}
+
+var uniqueCharacter = function(playerOne, playerTwo){
+  if(playerOne === playerTwo) {
+    playerTwo = +playerTwo + 4;
+    return playerTwo.toString();
+  } else {
+    return playerTwo;
   }
 }
 
@@ -71,19 +88,21 @@ var selectCharacter = function(value) {
     var playerOneName = $('.playerOne').val();
     var playerTwoName = $('.playerTwo').val();
     var playerOneSide = $('.categoryOne').val();
-    var playerTwoSide = $('.categoryTwo').val();
+    var playerTwoSide = uniqueCharacter(playerOneSide, $('.categoryTwo').val());
     var playerOneAvatar = selectCharacter(playerOneSide);
     var playerTwoAvatar = selectCharacter(playerTwoSide);
     $('.playerOneName').text(playerOneName);
     $('.playerTwoName').text(playerTwoName);
     playerSelection(playerOneName,playerTwoName);
 
-    $('.square').click(function(event) {
+    $('.square').on('click',function(event) {
       var $target = $(event.target);
       var targetParent = $target.parent();
       var divIndex = $target.index();
       var divParentIndex = targetParent.index();
       var combIndex = String(divParentIndex) + String(divIndex);
+
+      $target.off('click');
       if ($('h2').attr('class') == 'playerOne') {
         playerOneScore.push(combIndex);
         $target.css({backgroundImage: playerOneAvatar});
@@ -105,7 +124,6 @@ var selectCharacter = function(value) {
           return openLightbox();
         }
       }
-      return $target.attr('disabled','disabled')
   });
 }
 
@@ -131,12 +149,12 @@ var closeStartPage = function() {
 var resetGame = function() {
   roundNumber += 1;
   $('.square').css({backgroundImage: ''});
-  $('.square').removeAttr('disabled');
+  startGame();
 };
 
 var inputValidation = function() {
-  if(!$('.playerOne')[0].value || !$('.playerTwo')[0].value || !$('.categoryOne')[0].value || !$('.categoryTwo')[0].value){
-    alert('Please input all information');
+  if(!$('.playerOne').val() || !$('.playerTwo').val() || !$('.categoryOne').val() || !$('.categoryTwo').val()){
+    alert('Please complete all information');
   } else {
     closeStartPage();
     startGame();
