@@ -1,11 +1,7 @@
 body {
   background: url('../images/background.jpeg');
   margin: 30px auto;
-<<<<<<< HEAD
-  max-height: 100vh;
-=======
   zoom: 80%;
->>>>>>> master
 }
 div {
   width:90%;
@@ -173,11 +169,7 @@ select {
 }
 
 .winner {
-<<<<<<< HEAD
-  margin: 8% auto 0;
-=======
   margin: 0 auto;
->>>>>>> master
 }
 
 footer {
