@@ -94,12 +94,12 @@ var selectCharacter = function(value) {
       playerSelection(playerOneName,playerTwoName);
       if (playerOneScore.length > 2 || playerTwoScore.length > 2){
         if (playerWhoWin(playerOneScore) == 1 ) {
-          $('.winner').text(playerOneName + " is The Winner");
+          $('.winner').text(playerOneName);
           playerOneWinCounter += 1;
           resetScore();
           return openLightbox();
         } else if (playerWhoWin(playerTwoScore) == 1) {
-          $('.winner').text(playerTwoName + " is The Winner");
+          $('.winner').text(playerTwoName);
           playerTwoWinCounter += 1;
           resetScore();
           return openLightbox();
@@ -133,5 +133,14 @@ var resetGame = function() {
   $('.square').css({backgroundImage: ''});
   $('.square').removeAttr('disabled');
 };
+
+var inputValidation = function() {
+  if(!$('.playerOne')[0].value || !$('.playerTwo')[0].value || !$('.categoryOne')[0].value || !$('.categoryTwo')[0].value){
+    alert('Please input all information');
+  } else {
+    closeStartPage();
+    startGame();
+  }
+}
 
 $(document).one('ready',openStartPage());

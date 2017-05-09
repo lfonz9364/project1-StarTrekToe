@@ -1,6 +1,7 @@
 body {
   background: url('../images/background.jpeg');
   margin: 30px auto;
+  zoom: 80%;
 }
 div {
   width:90%;
@@ -152,6 +153,12 @@ select {
   width: 70%;
 }
 
+.header {
+  display: inline-block;
+  vertical-align: text-top;
+  width: 25%;
+}
+
 .inputPlayer {
   width: 40%;
 }
@@ -161,7 +168,7 @@ select {
 }
 
 .winner {
-  margin: 12% auto;
+  margin: 0 auto;
 }
 
 footer {
