@@ -33,6 +33,8 @@
             <option value="3">Romulan</option>
             <option value="4">Vulcan</option>
           </select>
+          <h3>Number of Round</h3>
+          <input class="maxRound" type="text" placeholder="Input number of round">
         <button class="startGame" onclick="inputValidation();">Start</button>
         <button class="clearNames" onclick="clearNames()">Clear</button>
       </div>
@@ -46,6 +48,12 @@
   </div>
   <div class="header">
     <p>
+      <p>Round</p>
+      <p class="roundNumber"></p>
+    </p>
+  </div>
+  <div class="header">
+    <p>
       <p class="playerTwoName"></p>
       <p class="winCountTwo"></p>
     </p>
@@ -53,27 +61,27 @@
   <h2></h2>
   <div class="gameBoard">
     <div class="first row">
-      <div class="square">
+      <div class="square" data-value="00">
       </div>
-      <div class="square">
+      <div class="square" data-value="01">
       </div>
-      <div class="square">
+      <div class="square" data-value="02">
       </div>
     </div>
     <div class="second row">
-      <div class="square">
+      <div class="square" data-value="10">
       </div>
-      <div class="square">
+      <div class="square" data-value="11">
       </div>
-      <div class="square">
+      <div class="square" data-value="12">
       </div>
     </div>
     <div class="third row">
-      <div class="square">
+      <div class="square" data-value="20">
       </div>
-      <div class="square">
+      <div class="square" data-value="21">
       </div>
-      <div class="square">
+      <div class="square" data-value="22">
       </div>
     </div>
   </div>
@@ -89,6 +97,8 @@
   src="https://code.jquery.com/jquery-3.1.1.js"
   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
   crossorigin="anonymous"></script>
+  <script src="script/function.js"></script>
   <script src="script/game.js"></script>
+  <script src="script/lightbox.js"></script>
 </body>
 </html>

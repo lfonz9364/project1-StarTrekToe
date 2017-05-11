@@ -1,7 +1,7 @@
 body {
   background: url('../images/background.jpeg');
   margin: 30px auto;
-  zoom: 80%;
+  zoom: 70%;
 }
 div {
   width:90%;
@@ -147,7 +147,7 @@ select {
 
 .startPageContent {
   position: relative;
-  bottom: 15%;
+  bottom: 10%;
   background-color: rgba(0,0,0,0.2);
   margin: auto;
   padding: 0;
@@ -157,7 +157,7 @@ select {
 .header {
   display: inline-block;
   vertical-align: text-top;
-  width: 49%;
+  width: 33%;
 }
 
 .inputPlayer {

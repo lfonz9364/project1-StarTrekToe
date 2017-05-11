@@ -1,89 +1,12 @@
-console.log('game');
 
-var playerOneScore = [];
-var playerTwoScore = [];
 var playerOneWinCounter = 0;
 var playerTwoWinCounter = 0;
-var roundNumber = 0;
+var roundNumber = 1;
+var playerOneScore;
+var playerTwoScore;
+var maxRound;
 
-  var clearNames = function() {
-    $('.playerOne').val('');
-    $('.playerTwo').val('');
-    $('.categoryOne').val('');
-    $('.categoryTwo').val('');
-  };
-
-  var resetScore = function() {
-    playerOneScore = [];
-    playerTwoScore = [];
-  };
-
-  var playerSelection = function(name1,name2){
-    if ($('h2').attr('class') === 'playerOne') {
-      $('h2').removeClass();
-      $('h2').addClass('playerTwo');
-      return $('h2').text(name2 + ' turn');
-    } else if ($('h2').attr('class') === 'playerTwo'){
-      $('h2').removeClass();
-      $('h2').addClass('playerOne');
-      return $('h2').text(name1 + ' turn');
-    } else {
-      $('h2').addClass('playerOne');
-      return $('h2').text(name1 + ' turn');
-    }
-  };
-
-  var playerWhoWin = function(score) {
-    var x = 0;
-    if (score.includes('00') && score.includes('01') && score.includes('02')){
-       x = 1;
-    } else if (score.includes('10') && score.includes('11') && score.includes('12')) {
-      x = 1;
-    } else if (score.includes('20') && score.includes('21') && score.includes('22')){
-      x = 1;
-    } else if (score.includes('20') && score.includes('11') && score.includes('02')) {
-      x = 1;
-    } else if (score.includes('00') && score.includes('11') && score.includes('22')) {
-      x = 1;
-    } else if (score.includes('00') && score.includes('10') && score.includes('20')) {
-      x = 1;
-    } else if (score.includes('01') && score.includes('11') && score.includes('21')) {
-      x = 1;
-    } else if (score.includes('02') && score.includes('12') && score.includes('22')) {
-      x = 1;
-    }
-    return x;
-  };
-
-var selectCharacter = function(value) {
-  if (value === '1') {
-    return 'url(images/klingon_cruiser.jpg)';
-  } else if (value === '2') {
-    return 'url(images/borg_cube.jpg)';
-  } else if (value === '3') {
-    return 'url(images/romulan.jpg)';
-  } else if (value === '4') {
-    return 'url(images/vulcan.jpg)';
-  } else if (value === '5') {
-    return 'url(images/klingon_2.jpg)';
-  } else if (value === '6') {
-    return 'url(images/borg_sphere.png)';
-  } else if (value === '7') {
-    return 'url(images/romulan_2.jpg)';
-  } else {
-    return 'url(images/vulcan_2.jpg)';
-  }
-}
-
-var uniqueCharacter = function(playerOne, playerTwo){
-  if(playerOne === playerTwo) {
-    playerTwo = +playerTwo + 4;
-    return playerTwo.toString();
-  } else {
-    return playerTwo;
-  }
-}
-
+// Start a new game
   var startGame = function() {
     var playerOneName = $('.playerOne').val();
     var playerTwoName = $('.playerTwo').val();
@@ -91,75 +14,53 @@ var uniqueCharacter = function(playerOne, playerTwo){
     var playerTwoSide = uniqueCharacter(playerOneSide, $('.categoryTwo').val());
     var playerOneAvatar = selectCharacter(playerOneSide);
     var playerTwoAvatar = selectCharacter(playerTwoSide);
+    maxRound = Number($('.maxRound').val());
+    playerOneScore = [];
+    playerTwoScore = [];
+
     $('.playerOneName').text(playerOneName);
     $('.playerTwoName').text(playerTwoName);
-    playerSelection(playerOneName,playerTwoName);
+    $('.roundNumber').text(roundNumber);
 
-    $('.square').on('click',function(event) {
+    $('.square').unbind().click(function(event) {
+      event.preventDefault();
       var $target = $(event.target);
-      var targetParent = $target.parent();
-      var divIndex = $target.index();
-      var divParentIndex = targetParent.index();
-      var combIndex = String(divParentIndex) + String(divIndex);
+      var combIndex = $target[0].dataset.value;
 
       $target.off('click');
-      if ($('h2').attr('class') == 'playerOne') {
+
+      playerSelection(playerOneName,playerTwoName);
+
+      if ($('h2').attr('class') === 'playerOne') {
         playerOneScore.push(combIndex);
         $target.css({backgroundImage: playerOneAvatar});
-      } else if ($('h2').attr('class') == 'playerTwo'){
+      } else {
         playerTwoScore.push(combIndex);
         $target.css({backgroundImage: playerTwoAvatar});
-      }
-      playerSelection(playerOneName,playerTwoName);
-      if (playerOneScore.length > 2 || playerTwoScore.length > 2){
-        if (playerWhoWin(playerOneScore) == 1 ) {
-          $('.winner').text(playerOneName);
-          playerOneWinCounter += 1;
-          resetScore();
-          return openLightbox();
-        } else if (playerWhoWin(playerTwoScore) == 1) {
-          $('.winner').text(playerTwoName);
-          playerTwoWinCounter += 1;
-          resetScore();
-          return openLightbox();
-        }
-      }
+      };
+
+      if (playerWhoWin(playerOneScore)) {
+        $('.winner').text(playerOneName);
+        playerOneWinCounter += 1;
+        return openLightbox();
+      } else if (playerWhoWin(playerTwoScore)) {
+        $('.winner').text(playerTwoName);
+        playerTwoWinCounter += 1;
+        return openLightbox();
+      };
   });
-}
-
-var openLightbox = function() {
-  $('.lightbox').css('display', 'block');
-  $('.winCountOne').text(playerOneWinCounter);
-  $('.winCountTwo').text(playerTwoWinCounter);
 };
 
-var closeLightbox = function() {
-  $('.lightbox').css('display', 'none');
-  $('.winnerName').remove();
-  resetGame();
-};
-
-var openStartPage = function() {
-  $('.startPage').css('display', 'block');
-};
-
-var closeStartPage = function() {
-  $('.startPage').css('display', 'none');
-};
-
+// Reset game
 var resetGame = function() {
   roundNumber += 1;
   $('.square').css({backgroundImage: ''});
-  startGame();
+  $('.winnerName').remove();
+  $('h2').removeClass();
+
+  while(roundNumber <= maxRound){
+    return startGame();
+  };
+
+  location.reload();
 };
-
-var inputValidation = function() {
-  if(!$('.playerOne').val() || !$('.playerTwo').val() || !$('.categoryOne').val() || !$('.categoryTwo').val()){
-    alert('Please complete all information');
-  } else {
-    closeStartPage();
-    startGame();
-  }
-}
-
-$(document).one('ready',openStartPage());
