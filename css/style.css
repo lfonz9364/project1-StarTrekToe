@@ -3,6 +3,7 @@ body {
   margin: 30px auto;
   zoom: 70%;
 }
+
 div {
   width:90%;
   text-align: center;
@@ -54,6 +55,11 @@ button {
   position: absolute;
   top: 15%;
   left: 5%;
+  background-color: grey;
+  padding: 10px;
+  border-radius: 20%;
+  font-size: 3em;
+  cursor: pointer;
 }
 
 input {
