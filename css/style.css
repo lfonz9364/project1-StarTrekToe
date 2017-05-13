@@ -10,7 +10,7 @@ div {
   margin: 0 auto;
 }
 
-h1,h2,h3,p {
+h1,h3 {
   font-family: 'Fascinate Inline', cursive;
   color: white;
   text-align: center;
@@ -51,17 +51,6 @@ button {
   font-family: 'Black Ops One', cursive;
 }
 
-.reset {
-  position: absolute;
-  top: 15%;
-  left: 5%;
-  background-color: grey;
-  padding: 10px;
-  border-radius: 20%;
-  font-size: 3em;
-  cursor: pointer;
-}
-
 input {
   display:block;
   margin: 0 auto;
@@ -80,8 +69,18 @@ select {
   font-size: 1.5em;
   box-shadow: 5px 5px #000000,
   5px 5px #000000;
-  width: 70%;
-  text-align: center;
+  width: 50%;
+}
+
+.reset {
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  background-color: grey;
+  padding: 10px;
+  border-radius: 20%;
+  font-size: 3em;
+  cursor: pointer;
 }
 
 .third {
@@ -153,7 +152,6 @@ select {
 
 .startPageContent {
   position: relative;
-  bottom: 10%;
   background-color: rgba(0,0,0,0.2);
   margin: auto;
   padding: 0;
